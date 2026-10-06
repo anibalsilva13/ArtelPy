@@ -1,11 +1,13 @@
-# ArtelPy
+# 🛒 ArtelPy
 
-![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?logo=html5&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Estilos-06B6D4?logo=tailwindcss&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?logo=javascript&logoColor=black)
-![Open-Meteo API](https://img.shields.io/badge/API-Open--Meteo-4285F4)
-![LocalStorage](https://img.shields.io/badge/Persistencia-LocalStorage-D2A63A)
-![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-Estilos-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Open--Meteo-API-4285F4?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Open-Meteo API">
+  <img src="https://img.shields.io/badge/LocalStorage-Persistencia-D2A63A?style=for-the-badge&logo=databricks&logoColor=white" alt="LocalStorage">
+  <img src="https://img.shields.io/badge/GitHub_Pages-Deploy-222222?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages">
+</p>
 
 ArtelPy es un proyecto de e-commerce frontend enfocado en artesanías paraguayas, inspirado en la identidad de Carapeguá y en la tradición del poyvi.
 
