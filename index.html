@@ -3,12 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <meta
         name="description"
         content="ArtelPy - Tienda de artesanías paraguayas desde Carapeguá"
@@ -16,27 +14,22 @@
 
     <title>ArtelPy | Artesanías Paraguayas</title>
 
-    <!-- Google Fonts -->
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
     >
-
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
         crossorigin
     >
-
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Tailwind CSS mediante CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Configuración personalizada de Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -47,138 +40,71 @@
                     },
 
                     colors: {
-                        crema: "#F8F3EA",
-                        verde: "#213A32",
-                        terracota: "#B75D3E",
-                        arena: "#D8C3A5",
-                        marron: "#332A25",
-                        gris: "#716A63"
+                        fondo: "#15110E",
+                        superficie: "#211A15",
+                        superficie2: "#2A211A",
+                        dorado: "#D2A63A",
+                        doradoClaro: "#E7C866",
+                        crema: "#F5EEDC",
+                        gris: "#B8AA99",
+                        linea: "#44362A"
                     },
 
                     boxShadow: {
-                        suave: "0 10px 30px rgba(33, 58, 50, 0.08)",
-                        tarjeta: "0 18px 45px rgba(33, 58, 50, 0.12)"
+                        suave: "0 12px 32px rgba(0, 0, 0, 0.22)",
+                        tarjeta: "0 20px 55px rgba(0, 0, 0, 0.32)"
                     }
                 }
             }
-        }
+        };
     </script>
 
-    <!-- CSS propio -->
     <link
         rel="stylesheet"
         href="styles.css"
     >
 </head>
 
-<body class="bg-crema font-sans text-marron">
+<body class="bg-fondo font-sans text-crema">
 
-    <!-- Fondo del carrito -->
     <div
         id="cartOverlay"
-        class="
-            invisible
-            fixed
-            inset-0
-            z-40
-            bg-black/40
-            opacity-0
-            transition-all
-            duration-300
-        "
+        class="invisible fixed inset-0 z-40 bg-black/60 opacity-0 transition-all duration-300"
+        aria-hidden="true"
     ></div>
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+    <!-- Header -->
+    <header class="sticky top-0 z-30 border-b border-linea bg-fondo/95 backdrop-blur-md">
 
-    <header
-        class="
-            sticky
-            top-0
-            z-30
-            border-b
-            border-arena/50
-            bg-crema/95
-            backdrop-blur-md
-        "
-    >
-
-        <div
-            class="
-                mx-auto
-                flex
-                max-w-7xl
-                items-center
-                justify-between
-                px-4
-                py-4
-                lg:px-8
-            "
-        >
-
-            <!-- Logo -->
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
 
             <a
                 href="#inicio"
                 class="flex items-center gap-3"
+                aria-label="Ir al inicio de ArtelPy"
             >
-
                 <img
                     src="assets/img/logoartell.png"
-                    alt="Logo ArtelPy"
-                    class="
-                        h-16
-                        w-16
-                        rounded-full
-                        object-cover
-                        shadow-sm
-                    "
+                    alt="Logo de ArtelPy"
+                    class="h-16 w-16 rounded-full object-cover shadow-sm"
                 >
 
                 <div class="hidden sm:block">
-
-                    <p
-                        class="
-                            font-display
-                            text-2xl
-                            font-bold
-                            text-verde
-                        "
-                    >
+                    <p class="font-display text-2xl font-bold text-crema">
                         ArtelPy
                     </p>
 
-                    <p
-                        class="
-                            text-[10px]
-                            font-semibold
-                            uppercase
-                            tracking-[0.25em]
-                            text-terracota
-                        "
-                    >
+                    <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-dorado">
                         Carapeguá · Paraguay
                     </p>
-
                 </div>
-
             </a>
 
-            <!-- Navegación -->
-
-            <nav class="hidden flex-1 justify-center md:flex">
-
-                <ul
-                    class="
-                        flex
-                        items-center
-                        gap-12
-                        text-lg
-                        font-semibold
-                        text-verde
-                    "
-                >
+            <nav
+                class="hidden flex-1 justify-center lg:flex"
+                aria-label="Navegación principal"
+            >
+                <ul class="flex items-center gap-12 text-lg font-semibold">
 
                     <li>
                         <a
@@ -208,67 +134,97 @@
                     </li>
 
                 </ul>
-
             </nav>
-
-            <!-- Carrito -->
 
             <div class="flex items-center gap-3">
 
+                <!-- Clima -->
+                <section
+                    id="weatherWidget"
+                    class="weather-card hidden xl:flex"
+                    aria-label="Clima actual"
+                    aria-live="polite"
+                >
+                    <div
+                        id="weatherIcon"
+                        class="weather-icon"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="min-w-0">
+
+                        <p
+                            id="weatherLocation"
+                            class="truncate text-sm font-semibold text-crema"
+                        >
+                            Detectando ubicación...
+                        </p>
+
+                        <div class="flex items-center gap-2">
+
+                            <span
+                                id="weatherTemp"
+                                class="text-xl font-bold leading-none text-crema"
+                            >
+                                --
+                            </span>
+
+                            <span class="h-5 w-px bg-linea"></span>
+
+                            <span
+                                id="weatherDescription"
+                                class="max-w-[130px] truncate text-sm text-gris"
+                            >
+                                Cargando clima
+                            </span>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Carrito -->
                 <button
                     id="openCartBtn"
-                    class="
-                        relative
-                        rounded-full
-                        border
-                        border-verde
-                        px-5
-                        py-2.5
-                        text-sm
-                        font-semibold
-                        text-verde
-                        transition
-                        hover:bg-verde
-                        hover:text-white
-                    "
+                    type="button"
+                    class="cart-nav-button"
+                    aria-label="Abrir carrito de compras"
+                    aria-controls="cartDrawer"
+                    aria-expanded="false"
+                    title="Ver carrito"
                 >
-
-                    Carrito
+                    <svg
+                        class="cart-nav-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.8"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.085.836L5.25 5.84m0 0h14.383c.75 0 1.3.707 1.114 1.434l-1.5 5.85a1.125 1.125 0 0 1-1.09.846H8.01a1.125 1.125 0 0 1-1.09-.846L5.25 5.84Zm3.375 11.91a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Zm10.5 0a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"
+                        ></path>
+                    </svg>
 
                     <span
                         id="cartCount"
-                        class="
-                            ml-2
-                            inline-flex
-                            min-w-6
-                            items-center
-                            justify-center
-                            rounded-full
-                            bg-terracota
-                            px-2
-                            py-0.5
-                            text-xs
-                            font-bold
-                            text-white
-                        "
+                        class="cart-count"
+                        aria-label="Cantidad de productos"
                     >
                         0
                     </span>
-
                 </button>
 
                 <button
                     id="menuBtn"
-                    class="
-                        rounded-full
-                        border
-                        border-arena
-                        bg-white
-                        px-3
-                        py-2
-                        text-verde
-                        md:hidden
-                    "
+                    type="button"
+                    class="rounded-full border border-linea bg-superficie px-3 py-2 text-crema lg:hidden"
+                    aria-label="Abrir menú"
+                    aria-controls="mobileMenu"
+                    aria-expanded="false"
                 >
                     ☰
                 </button>
@@ -277,226 +233,184 @@
 
         </div>
 
-        <!-- Menú móvil -->
-
         <div
             id="mobileMenu"
-            class="
-                hidden
-                border-t
-                border-arena/50
-                bg-crema
-                md:hidden
-            "
+            class="hidden border-t border-linea bg-superficie lg:hidden"
         >
-
-            <nav class="px-6 py-5">
-
-                <ul
-                    class="
-                        space-y-4
-                        text-base
-                        font-semibold
-                        text-verde
-                    "
-                >
+            <nav
+                class="px-6 py-5"
+                aria-label="Navegación móvil"
+            >
+                <ul class="space-y-4 text-base font-semibold">
 
                     <li>
-                        <a href="#productos">
+                        <a
+                            href="#productos"
+                            class="mobile-nav-link"
+                        >
                             Productos
                         </a>
                     </li>
 
                     <li>
-                        <a href="#nosotros">
+                        <a
+                            href="#nosotros"
+                            class="mobile-nav-link"
+                        >
                             Nosotros
                         </a>
                     </li>
 
                     <li>
-                        <a href="#contacto">
+                        <a
+                            href="#contacto"
+                            class="mobile-nav-link"
+                        >
                             Contacto
                         </a>
                     </li>
 
                 </ul>
-
             </nav>
-
         </div>
 
     </header>
 
-    <!-- =========================================
-         CONTENIDO
-    ========================================== -->
-
     <main id="inicio">
 
-        <!-- HERO -->
+        <!-- Hero -->
+        <section class="mx-auto max-w-7xl px-4 pb-16 pt-10 lg:px-8 lg:pb-24 lg:pt-14">
 
-        <section
-            class="
-                mx-auto
-                max-w-7xl
-                px-4
-                pb-16
-                pt-10
-                lg:px-8
-                lg:pb-24
-                lg:pt-14
-            "
-        >
-
-            <div
-                class="
-                    grid
-                    items-center
-                    gap-10
-                    overflow-hidden
-                    rounded-[32px]
-                    bg-white
-                    p-6
-                    shadow-tarjeta
-                    lg:grid-cols-2
-                    lg:p-10
-                "
-            >
-
-                <!-- Texto -->
+            <div class="grid items-center gap-10 overflow-hidden rounded-[32px] border border-linea bg-superficie p-6 shadow-tarjeta lg:grid-cols-2 lg:p-10">
 
                 <div>
 
-                    <span
-                        class="
-                            inline-block
-                            rounded-full
-                            bg-arena/35
-                            px-4
-                            py-2
-                            text-xs
-                            font-bold
-                            uppercase
-                            tracking-[0.25em]
-                            text-terracota
-                        "
-                    >
+                    <span class="inline-block rounded-full border border-dorado/30 bg-dorado/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-doradoClaro">
                         Artesanía paraguaya
                     </span>
 
-                    <h1
-                        class="
-                            mt-5
-                            font-display
-                            text-4xl
-                            font-bold
-                            leading-tight
-                            text-verde
-                            md:text-5xl
-                            lg:text-6xl
-                        "
-                    >
+                    <h1 class="mt-5 font-display text-4xl font-bold leading-tight text-crema md:text-5xl lg:text-6xl">
                         Tradición artesanal desde Carapeguá
                     </h1>
 
-                    <p
-                        class="
-                            mt-5
-                            max-w-xl
-                            text-base
-                            leading-8
-                            text-gris
-                            md:text-lg
-                        "
-                    >
-                        Descubrí productos artesanales elaborados
-                        con identidad paraguaya, inspirados en la
-                        tradición del poyvi y el trabajo hecho a mano.
+                    <p class="mt-5 max-w-xl text-base leading-8 text-gris md:text-lg">
+                        Descubrí productos artesanales elaborados con identidad
+                        paraguaya, inspirados en la tradición del poyvi,
+                        el ñandutí y el trabajo hecho a mano.
                     </p>
 
-                    <div
-                        class="
-                            mt-8
-                            flex
-                            flex-wrap
-                            gap-4
-                        "
-                    >
+                    <div class="mt-8 flex flex-wrap gap-4">
 
                         <a
                             href="#productos"
-                            class="
-                                rounded-full
-                                bg-verde
-                                px-7
-                                py-3
-                                text-sm
-                                font-bold
-                                text-white
-                                transition
-                                hover:bg-[#2D5146]
-                            "
+                            class="rounded-full bg-dorado px-7 py-3 text-sm font-bold text-fondo transition hover:bg-doradoClaro"
                         >
                             Ver productos
                         </a>
 
                         <a
                             href="#nosotros"
-                            class="
-                                rounded-full
-                                border
-                                border-verde
-                                px-7
-                                py-3
-                                text-sm
-                                font-bold
-                                text-verde
-                                transition
-                                hover:bg-verde
-                                hover:text-white
-                            "
+                            class="rounded-full border border-dorado/70 px-7 py-3 text-sm font-bold text-doradoClaro transition hover:bg-dorado/10"
                         >
                             Conocer ArtelPy
                         </a>
 
                     </div>
 
+                    <div class="mt-8 flex flex-wrap gap-3">
+
+                        <span class="hero-pill">
+
+                            <svg
+                                class="hero-pill-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.8"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3.75 19.5c4.5 0 6.75-2.25 6.75-6.75V3.75c-4.5 0-6.75 2.25-6.75 6.75V19.5Zm0 0h16.5"
+                                ></path>
+                            </svg>
+
+                            Hecho en Paraguay
+                        </span>
+
+                        <span class="hero-pill">
+
+                            <svg
+                                class="hero-pill-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.8"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="m11.48 3.499 1.041 2.108a1.125 1.125 0 0 0 .847.616l2.327.338a1.125 1.125 0 0 1 .623 1.918l-1.684 1.64a1.125 1.125 0 0 0-.323.996l.398 2.318a1.125 1.125 0 0 1-1.632 1.185L11 13.347l-2.08 1.093a1.125 1.125 0 0 1-1.632-1.185l.398-2.318a1.125 1.125 0 0 0-.323-.996L5.679 8.48a1.125 1.125 0 0 1 .623-1.918l2.327-.338a1.125 1.125 0 0 0 .847-.616l1.041-2.108a1.125 1.125 0 0 1 2.018 0Z"
+                                ></path>
+                            </svg>
+
+                            Artesanía local
+                        </span>
+
+                        <span class="hero-pill">
+
+                            <svg
+                                class="hero-pill-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.8"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 4.5h11.25v9H3v-9Zm11.25 2.25h3.638a1.5 1.5 0 0 1 1.2.6l1.462 1.95c.194.26.3.576.3.9v3.3h-6.6V6.75ZM8.25 18.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm10.5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+                                ></path>
+                            </svg>
+
+                            Envíos nacionales
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <!-- Imágenes hero -->
+                <div class="grid grid-cols-2 gap-4 rounded-[28px] bg-fondo/60 p-4">
 
-                <div
-                    class="
-                        grid
-                        grid-cols-2
-                        gap-4
-                        rounded-[28px]
-                        bg-crema
-                        p-4
-                    "
-                >
+                    <figure class="hero-image-wrapper">
+                        <img
+                            src="assets/img/hamaca.png"
+                            alt="Hamaca artesanal paraguaya"
+                            class="hero-image"
+                        >
 
-                    <img
-                        src="assets/img/hamaca.png"
-                        alt="Hamaca artesanal paraguaya"
-                        class="
-                            h-[420px]
-                            w-full
-                            rounded-[22px]
-                            object-cover
-                        "
-                    >
+                        <figcaption class="hero-image-label">
+                            Hamacas
+                        </figcaption>
+                    </figure>
 
-                    <img
-                        src="assets/img/termoforr.png"
-                        alt="Termo forrado artesanal"
-                        class="
-                            h-[420px]
-                            w-full
-                            rounded-[22px]
-                            object-cover
-                        "
-                    >
+                    <figure class="hero-image-wrapper">
+                        <img
+                            src="assets/img/termoforr.png"
+                            alt="Termo forrado artesanal"
+                            class="hero-image"
+                        >
+
+                        <figcaption class="hero-image-label">
+                            Termos
+                        </figcaption>
+                    </figure>
 
                 </div>
 
@@ -504,68 +418,27 @@
 
         </section>
 
-        <!-- CATEGORÍAS -->
+        <!-- Categorías -->
+        <section class="mx-auto max-w-7xl px-4 py-10 lg:px-8">
 
-        <section
-            class="
-                mx-auto
-                max-w-7xl
-                px-4
-                py-10
-                lg:px-8
-            "
-        >
+            <header class="mb-10 text-center">
 
-            <div class="mb-10 text-center">
-
-                <span
-                    class="
-                        text-xs
-                        font-bold
-                        uppercase
-                        tracking-[0.25em]
-                        text-terracota
-                    "
-                >
+                <span class="text-xs font-bold uppercase tracking-[0.25em] text-dorado">
                     Nuestra colección
                 </span>
 
-                <h2
-                    class="
-                        mt-3
-                        font-display
-                        text-3xl
-                        font-bold
-                        text-verde
-                        md:text-4xl
-                    "
-                >
+                <h2 class="mt-3 font-display text-3xl font-bold text-crema md:text-4xl">
                     Categorías destacadas
                 </h2>
 
-                <p
-                    class="
-                        mx-auto
-                        mt-3
-                        max-w-xl
-                        text-gris
-                    "
-                >
-                    Productos artesanales seleccionados
-                    con inspiración en la tradición paraguaya.
+                <p class="mx-auto mt-3 max-w-xl leading-7 text-gris">
+                    Una selección de productos que representan tradición,
+                    diseño y trabajo artesanal.
                 </p>
 
-            </div>
+            </header>
 
-            <div
-                class="
-                    grid
-                    gap-6
-                    md:grid-cols-3
-                "
-            >
-
-                <!-- Hamacas -->
+            <div class="grid gap-6 md:grid-cols-3">
 
                 <article class="category-card">
 
@@ -580,20 +453,19 @@
                     </h3>
 
                     <p class="category-description">
-                        Piezas textiles pensadas para el descanso,
-                        elaboradas con inspiración artesanal.
+                        Piezas textiles creadas para el descanso,
+                        inspiradas en la tradición artesanal de Carapeguá.
                     </p>
 
                     <button
-                        class="category-btn category-action"
+                        type="button"
+                        class="category-action"
                         data-category="Hamacas"
                     >
                         Ver productos
                     </button>
 
                 </article>
-
-                <!-- Ponchos -->
 
                 <article class="category-card">
 
@@ -608,20 +480,19 @@
                     </h3>
 
                     <p class="category-description">
-                        Diseños tradicionales con textura,
-                        calidez y carácter artesanal.
+                        Diseños tradicionales con textura, calidez
+                        y una estética artesanal contemporánea.
                     </p>
 
                     <button
-                        class="category-btn category-action"
+                        type="button"
+                        class="category-action"
                         data-category="Ponchos"
                     >
                         Ver productos
                     </button>
 
                 </article>
-
-                <!-- Termos -->
 
                 <article class="category-card">
 
@@ -636,12 +507,13 @@
                     </h3>
 
                     <p class="category-description">
-                        Un elemento cotidiano transformado
-                        mediante detalles y acabados artesanales.
+                        Elementos cotidianos transformados mediante
+                        detalles y acabados artesanales.
                     </p>
 
                     <button
-                        class="category-btn category-action"
+                        type="button"
+                        class="category-action"
                         data-category="Termos"
                     >
                         Ver productos
@@ -653,107 +525,75 @@
 
         </section>
 
-        <!-- CATÁLOGO -->
-
+        <!-- Productos -->
         <section
             id="productos"
-            class="
-                mx-auto
-                mt-16
-                max-w-7xl
-                scroll-mt-28
-                px-4
-                lg:px-8
-            "
+            class="mx-auto mt-16 max-w-7xl scroll-mt-28 px-4 lg:px-8"
         >
 
-            <div
-                class="
-                    mb-10
-                    flex
-                    flex-col
-                    gap-6
-                    lg:flex-row
-                    lg:items-end
-                    lg:justify-between
-                "
-            >
+            <header class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
 
                 <div>
 
-                    <span
-                        class="
-                            text-xs
-                            font-bold
-                            uppercase
-                            tracking-[0.25em]
-                            text-terracota
-                        "
-                    >
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-dorado">
                         Catálogo
                     </span>
 
-                    <h2
-                        class="
-                            mt-3
-                            font-display
-                            text-3xl
-                            font-bold
-                            text-verde
-                            md:text-4xl
-                        "
-                    >
+                    <h2 class="mt-3 font-display text-3xl font-bold text-crema md:text-4xl">
                         Nuestros productos
                     </h2>
 
-                    <p
-                        class="
-                            mt-3
-                            max-w-2xl
-                            leading-7
-                            text-gris
-                        "
-                    >
-                        Explorá nuestra colección de productos
-                        artesanales paraguayos.
+                    <p class="mt-3 max-w-2xl leading-7 text-gris">
+                        Explorá nuestra colección de productos artesanales
+                        inspirados en la cultura paraguaya.
                     </p>
 
                 </div>
 
-                <input
-                    id="searchInput"
-                    type="search"
-                    placeholder="Buscar producto..."
-                    class="
-                        w-full
-                        rounded-full
-                        border
-                        border-arena
-                        bg-white
-                        px-5
-                        py-3
-                        text-sm
-                        outline-none
-                        transition
-                        focus:border-verde
-                        lg:w-80
-                    "
-                >
+                <div class="relative">
 
-            </div>
+                    <label
+                        for="searchInput"
+                        class="sr-only"
+                    >
+                        Buscar producto
+                    </label>
 
-            <!-- Filtros -->
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="Buscar producto..."
+                        autocomplete="off"
+                        class="w-full rounded-full border border-linea bg-superficie px-5 py-3 pr-12 text-sm text-crema outline-none transition placeholder:text-gris/70 focus:border-dorado focus:ring-4 focus:ring-dorado/10 lg:w-80"
+                    >
+
+                    <svg
+                        class="pointer-events-none absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 text-gris"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.8"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m21 21-4.35-4.35m1.35-5.4a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Z"
+                        ></path>
+                    </svg>
+
+                </div>
+
+            </header>
 
             <div
-                class="
-                    mb-8
-                    flex
-                    flex-wrap
-                    gap-3
-                "
+                id="filters"
+                class="mb-8 flex flex-wrap gap-3"
+                aria-label="Filtros del catálogo"
             >
-
                 <button
+                    type="button"
                     class="filter-btn active-filter"
                     data-filter="Todos"
                 >
@@ -761,6 +601,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="filter-btn"
                     data-filter="Hamacas"
                 >
@@ -768,6 +609,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="filter-btn"
                     data-filter="Ponchos"
                 >
@@ -775,6 +617,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="filter-btn"
                     data-filter="Termos"
                 >
@@ -782,6 +625,7 @@
                 </button>
 
                 <button
+                    type="button"
                     class="filter-btn"
                     data-filter="Sobrecamas"
                 >
@@ -789,148 +633,83 @@
                 </button>
 
                 <button
+                    type="button"
                     class="filter-btn"
                     data-filter="Accesorios"
                 >
                     Accesorios
                 </button>
-
             </div>
-
-            <!-- Productos generados por JavaScript -->
 
             <div
                 id="productGrid"
-                class="
-                    grid
-                    gap-7
-                    md:grid-cols-2
-                    xl:grid-cols-3
-                "
+                class="grid gap-7 md:grid-cols-2 xl:grid-cols-3"
             ></div>
-
-            <!-- Sin resultados -->
 
             <div
                 id="emptyState"
-                class="
-                    hidden
-                    rounded-[28px]
-                    bg-white
-                    p-12
-                    text-center
-                    shadow-suave
-                "
+                class="hidden rounded-[28px] border border-linea bg-superficie p-12 text-center shadow-suave"
             >
-
-                <h3
-                    class="
-                        font-display
-                        text-2xl
-                        font-bold
-                        text-verde
-                    "
-                >
+                <h3 class="font-display text-2xl font-bold text-crema">
                     No encontramos productos
                 </h3>
 
                 <p class="mt-2 text-gris">
                     Probá con otro nombre o seleccioná otra categoría.
                 </p>
-
             </div>
 
         </section>
 
-        <!-- SOBRE ARTELPY -->
-
+        <!-- Nosotros -->
         <section
             id="nosotros"
-            class="
-                mx-auto
-                mt-24
-                max-w-7xl
-                scroll-mt-28
-                px-4
-                lg:px-8
-            "
+            class="mx-auto mt-24 max-w-7xl scroll-mt-28 px-4 lg:px-8"
         >
 
-            <div
-                class="
-                    grid
-                    gap-10
-                    rounded-[32px]
-                    bg-verde
-                    p-8
-                    text-white
-                    shadow-tarjeta
-                    lg:grid-cols-2
-                    lg:p-12
-                "
-            >
+            <div class="grid gap-10 rounded-[32px] border border-linea bg-superficie2 p-8 shadow-tarjeta lg:grid-cols-2 lg:p-12">
 
                 <div>
 
-                    <span
-                        class="
-                            text-xs
-                            font-bold
-                            uppercase
-                            tracking-[0.25em]
-                            text-arena
-                        "
-                    >
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-dorado">
                         Sobre ArtelPy
                     </span>
 
-                    <h2
-                        class="
-                            mt-4
-                            font-display
-                            text-3xl
-                            font-bold
-                            md:text-4xl
-                        "
-                    >
+                    <h2 class="mt-4 font-display text-3xl font-bold text-crema md:text-4xl">
                         Artesanía desde la ciudad del poyvi
                     </h2>
 
-                    <p
-                        class="
-                            mt-5
-                            leading-8
-                            text-arena
-                        "
-                    >
-                        ArtelPy nace en Carapeguá con el propósito
-                        de acercar productos artesanales paraguayos
-                        a nuevas generaciones y valorizar el trabajo
-                        hecho a mano.
+                    <p class="mt-5 leading-8 text-gris">
+                        ArtelPy nace en Carapeguá con el propósito de acercar
+                        productos artesanales paraguayos a nuevas generaciones,
+                        valorizando el trabajo hecho a mano y nuestra identidad cultural.
                     </p>
 
                 </div>
 
-                <div
-                    class="
-                        rounded-[24px]
-                        bg-white/10
-                        p-7
-                    "
-                >
+                <div class="rounded-[24px] border border-linea bg-fondo/40 p-7">
 
-                    <ul
-                        class="
-                            space-y-5
-                            leading-7
-                            text-arena
-                        "
-                    >
+                    <ul class="space-y-5 leading-7 text-gris">
 
-                        <li>✓ Artesanía con identidad paraguaya</li>
-                        <li>✓ Productos inspirados en el poyvi</li>
-                        <li>✓ Trabajo artesanal y diseño contemporáneo</li>
-                        <li>✓ Envíos a diferentes puntos del país</li>
+                        <li>
+                            <span class="text-dorado">✓</span>
+                            Artesanía con identidad paraguaya
+                        </li>
+
+                        <li>
+                            <span class="text-dorado">✓</span>
+                            Productos inspirados en el poyvi
+                        </li>
+
+                        <li>
+                            <span class="text-dorado">✓</span>
+                            Diseño artesanal contemporáneo
+                        </li>
+
+                        <li>
+                            <span class="text-dorado">✓</span>
+                            Envíos a diferentes puntos del país
+                        </li>
 
                     </ul>
 
@@ -940,153 +719,130 @@
 
         </section>
 
-        <!-- CONTACTO -->
-
+        <!-- Contacto -->
         <section
             id="contacto"
-            class="
-                mx-auto
-                mt-24
-                max-w-7xl
-                scroll-mt-28
-                px-4
-                lg:px-8
-            "
+            class="mx-auto mt-24 max-w-7xl scroll-mt-28 px-4 lg:px-8"
         >
 
-            <div
-                class="
-                    grid
-                    gap-8
-                    lg:grid-cols-2
-                "
-            >
+            <div class="grid gap-8 lg:grid-cols-2">
 
-                <div
-                    class="
-                        rounded-[28px]
-                        bg-white
-                        p-8
-                        shadow-suave
-                    "
-                >
+                <article class="rounded-[28px] border border-linea bg-superficie p-8 shadow-suave">
 
-                    <span
-                        class="
-                            text-xs
-                            font-bold
-                            uppercase
-                            tracking-[0.25em]
-                            text-terracota
-                        "
-                    >
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-dorado">
                         Contacto
                     </span>
 
-                    <h2
-                        class="
-                            mt-4
-                            font-display
-                            text-3xl
-                            font-bold
-                            text-verde
-                        "
-                    >
+                    <h2 class="mt-4 font-display text-3xl font-bold text-crema">
                         Hablemos
                     </h2>
 
-                    <div
-                        class="
-                            mt-7
-                            space-y-4
-                            text-gris
-                        "
-                    >
+                    <p class="mt-4 max-w-lg leading-7 text-gris">
+                        Si tenés alguna consulta sobre nuestros productos,
+                        podés comunicarte con nosotros.
+                    </p>
+
+                    <div class="mt-8 space-y-5 text-gris">
 
                         <p>
-                            <strong class="text-marron">
+                            <strong class="text-crema">
                                 Ubicación:
                             </strong>
                             Carapeguá, Paraguay
                         </p>
 
                         <p>
-                            <strong class="text-marron">
+                            <strong class="text-crema">
                                 Instagram:
                             </strong>
                             @artelpy
                         </p>
 
                         <p>
-                            <strong class="text-marron">
+                            <strong class="text-crema">
                                 WhatsApp:
                             </strong>
-                            +595 981 000000
+                            +595 981 386 600
                         </p>
 
                     </div>
 
-                </div>
-
-                <!-- Formulario -->
+                </article>
 
                 <form
                     id="contactForm"
-                    class="
-                        rounded-[28px]
-                        bg-white
-                        p-8
-                        shadow-suave
-                    "
+                    class="rounded-[28px] border border-linea bg-superficie p-8 shadow-suave"
                 >
 
-                    <h3
-                        class="
-                            font-display
-                            text-2xl
-                            font-bold
-                            text-verde
-                        "
-                    >
+                    <h3 class="font-display text-2xl font-bold text-crema">
                         Envianos un mensaje
                     </h3>
 
+                    <p class="mt-2 text-sm leading-6 text-gris">
+                        Completá tus datos y escribinos tu consulta.
+                    </p>
+
                     <div class="mt-6 space-y-4">
 
-                        <input
-                            type="text"
-                            required
-                            placeholder="Nombre"
-                            class="contact-input"
-                        >
+                        <div>
+                            <label
+                                for="contactName"
+                                class="sr-only"
+                            >
+                                Nombre
+                            </label>
 
-                        <input
-                            type="email"
-                            required
-                            placeholder="Correo electrónico"
-                            class="contact-input"
-                        >
+                            <input
+                                id="contactName"
+                                name="nombre"
+                                type="text"
+                                required
+                                autocomplete="name"
+                                placeholder="Nombre"
+                                class="contact-input"
+                            >
+                        </div>
 
-                        <textarea
-                            rows="4"
-                            required
-                            placeholder="Mensaje"
-                            class="contact-input resize-none"
-                        ></textarea>
+                        <div>
+                            <label
+                                for="contactEmail"
+                                class="sr-only"
+                            >
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                id="contactEmail"
+                                name="email"
+                                type="email"
+                                required
+                                autocomplete="email"
+                                placeholder="Correo electrónico"
+                                class="contact-input"
+                            >
+                        </div>
+
+                        <div>
+                            <label
+                                for="contactMessage"
+                                class="sr-only"
+                            >
+                                Mensaje
+                            </label>
+
+                            <textarea
+                                id="contactMessage"
+                                name="mensaje"
+                                rows="4"
+                                required
+                                placeholder="Mensaje"
+                                class="contact-input resize-none"
+                            ></textarea>
+                        </div>
 
                         <button
                             type="submit"
-                            class="
-                                rounded-full
-                                bg-verde
-                                px-7
-                                py-3
-                                text-sm
-                                font-bold
-                                text-white
-                                transition
-                                hover:bg-[#2D5146]
-                            "
+                            class="rounded-full bg-dorado px-7 py-3 text-sm font-bold text-fondo transition hover:bg-doradoClaro"
                         >
                             Enviar mensaje
                         </button>
@@ -1101,36 +857,12 @@
 
     </main>
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
+    <!-- Footer -->
+    <footer class="mt-28 border-t border-linea bg-[#100C0A]">
 
-    <footer
-        class="
-            mt-28
-            border-t
-            border-arena/50
-            bg-white
-        "
-    >
+        <div class="mx-auto max-w-7xl px-4 py-16 lg:px-8">
 
-        <div
-            class="
-                mx-auto
-                max-w-7xl
-                px-4
-                py-16
-                lg:px-8
-            "
-        >
-
-            <div
-                class="
-                    grid
-                    gap-12
-                    lg:grid-cols-4
-                "
-            >
+            <div class="grid gap-12 lg:grid-cols-4">
 
                 <div class="lg:col-span-2">
 
@@ -1138,39 +870,27 @@
 
                         <img
                             src="assets/img/logoartell.png"
-                            alt="ArtelPy"
-                            class="
-                                h-20
-                                w-20
-                                rounded-full
-                                object-cover
-                            "
+                            alt="Logo ArtelPy"
+                            class="h-20 w-20 rounded-full object-cover"
                         >
 
-                        <h3
-                            class="
-                                font-display
-                                text-3xl
-                                font-bold
-                                text-verde
-                            "
-                        >
-                            ArtelPy
-                        </h3>
+                        <div>
+
+                            <h3 class="font-display text-3xl font-bold text-crema">
+                                ArtelPy
+                            </h3>
+
+                            <p class="text-xs font-bold uppercase tracking-[0.2em] text-dorado">
+                                Carapeguá · Paraguay
+                            </p>
+
+                        </div>
 
                     </div>
 
-                    <p
-                        class="
-                            mt-5
-                            max-w-md
-                            text-sm
-                            leading-7
-                            text-gris
-                        "
-                    >
-                        Artesanía paraguaya desde Carapeguá.
-                        Productos con historia, tradición e identidad.
+                    <p class="mt-5 max-w-md text-sm leading-7 text-gris">
+                        Artesanía paraguaya con historia, tradición
+                        e identidad desde la ciudad del poyvi.
                     </p>
 
                 </div>
@@ -1182,25 +902,9 @@
                     </h4>
 
                     <ul class="footer-list">
-
-                        <li>
-                            <a href="#productos">
-                                Productos
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#nosotros">
-                                Nosotros
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#contacto">
-                                Contacto
-                            </a>
-                        </li>
-
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
                     </ul>
 
                 </div>
@@ -1212,91 +916,46 @@
                     </h4>
 
                     <ul class="footer-list">
-
-                        <li>
-                            Carapeguá · Paraguay
-                        </li>
-
-                        <li>
-                            Artesanía paraguaya
-                        </li>
-
-                        <li>
-                            Proyecto académico
-                        </li>
-
+                        <li>Carapeguá · Paraguay</li>
+                        <li>Artesanía paraguaya</li>
+                        <li>Proyecto académico</li>
                     </ul>
 
                 </div>
 
             </div>
 
-            <div
-                class="
-                    mt-12
-                    border-t
-                    border-arena/50
-                    pt-7
-                    text-sm
-                    text-gris
-                "
-            >
-                © 2026 ArtelPy · Proyecto desarrollado con
-                HTML, Tailwind CSS y JavaScript.
+            <div class="mt-12 flex flex-col gap-3 border-t border-linea pt-7 text-sm text-gris md:flex-row md:items-center md:justify-between">
+
+                <p>
+                    © 2026 ArtelPy · Todos los derechos reservados.
+                </p>
+
+                <p>
+                    HTML · Tailwind CSS · JavaScript · APIs
+                </p>
+
             </div>
 
         </div>
 
     </footer>
 
-    <!-- =========================================
-         CARRITO LATERAL
-    ========================================== -->
-
+    <!-- Carrito -->
     <aside
         id="cartDrawer"
-        class="
-            fixed
-            right-0
-            top-0
-            z-50
-            flex
-            h-full
-            w-full
-            max-w-md
-            translate-x-full
-            flex-col
-            bg-white
-            shadow-2xl
-            transition-transform
-            duration-300
-        "
+        class="fixed right-0 top-0 z-50 flex h-full w-full max-w-md translate-x-full flex-col border-l border-linea bg-superficie shadow-2xl transition-transform duration-300"
+        aria-label="Carrito de compras"
+        aria-hidden="true"
     >
 
-        <div
-            class="
-                flex
-                items-center
-                justify-between
-                border-b
-                border-arena/50
-                px-6
-                py-5
-            "
-        >
+        <header class="flex items-center justify-between border-b border-linea px-6 py-5">
 
             <div>
 
-                <h3
-                    class="
-                        font-display
-                        text-2xl
-                        font-bold
-                        text-verde
-                    "
-                >
+                <h2 class="font-display text-2xl font-bold text-crema">
                     Tu carrito
-                </h3>
+                </h2>
 
                 <p class="text-sm text-gris">
                     Productos seleccionados
@@ -1306,129 +965,52 @@
 
             <button
                 id="closeCartBtn"
-                class="
-                    rounded-full
-                    border
-                    border-arena
-                    px-4
-                    py-2
-                    text-sm
-                    font-semibold
-                    text-verde
-                "
+                type="button"
+                class="rounded-full border border-linea px-4 py-2 text-sm font-semibold text-crema transition hover:bg-superficie2"
+                aria-label="Cerrar carrito"
             >
                 Cerrar
             </button>
 
-        </div>
+        </header>
 
         <div
             id="cartItems"
-            class="
-                flex-1
-                space-y-4
-                overflow-y-auto
-                px-6
-                py-5
-            "
+            class="flex-1 space-y-4 overflow-y-auto px-6 py-5"
         ></div>
 
-        <div
-            class="
-                border-t
-                border-arena/60
-                px-6
-                py-5
-            "
-        >
+        <footer class="border-t border-linea bg-fondo px-6 py-5">
 
-            <div
-                class="
-                    mb-3
-                    flex
-                    justify-between
-                    text-sm
-                    text-gris
-                "
-            >
-
+            <div class="mb-3 flex justify-between text-sm text-gris">
                 <span>Subtotal</span>
-
-                <span id="cartSubtotal">
-                    Gs. 0
-                </span>
-
+                <span id="cartSubtotal">Gs. 0</span>
             </div>
 
-            <div
-                class="
-                    mb-6
-                    flex
-                    justify-between
-                    text-xl
-                    font-bold
-                    text-verde
-                "
-            >
-
+            <div class="mb-6 flex justify-between text-xl font-bold text-crema">
                 <span>Total</span>
-
-                <span id="cartTotal">
-                    Gs. 0
-                </span>
-
+                <span id="cartTotal">Gs. 0</span>
             </div>
 
             <button
                 id="checkoutBtn"
-                class="
-                    w-full
-                    rounded-full
-                    bg-verde
-                    px-6
-                    py-3
-                    text-sm
-                    font-bold
-                    text-white
-                    transition
-                    hover:bg-[#2D5146]
-                "
+                type="button"
+                class="w-full rounded-full bg-dorado px-6 py-3 text-sm font-bold text-fondo transition hover:bg-doradoClaro"
             >
                 Finalizar compra
             </button>
 
-        </div>
+        </footer>
 
     </aside>
 
-    <!-- Toast -->
-
     <div
         id="toast"
-        class="
-            pointer-events-none
-            fixed
-            bottom-6
-            right-6
-            z-[60]
-            translate-y-4
-            rounded-full
-            bg-verde
-            px-5
-            py-3
-            text-sm
-            font-semibold
-            text-white
-            opacity-0
-            shadow-xl
-            transition-all
-            duration-300
-        "
+        class="pointer-events-none fixed bottom-6 right-6 z-[60] translate-y-4 rounded-full border border-dorado/30 bg-superficie px-5 py-3 text-sm font-semibold text-crema opacity-0 shadow-xl transition-all duration-300"
+        role="status"
+        aria-live="polite"
     >
         Producto agregado
     </div>
-
-    <!-- JavaScript -->
 
     <script src="app.js"></script>
 
