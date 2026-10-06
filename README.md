@@ -1,16 +1,5 @@
 # 🛒 ArtelPy
 
-<p>
-  <img src="https://cdn.simpleicons.org/html5/E34F26" width="16" alt="HTML5"> HTML5 &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="16" alt="Tailwind CSS"> Tailwind CSS &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/javascript/F7DF1E" width="16" alt="JavaScript"> JavaScript &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/nodedotjs/8CC84B" width="16" alt="ES Modules"> ES Modules &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/openweathermap/4285F4" width="16" alt="Open-Meteo API"> Open-Meteo API &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/googlecloud/F4B400" width="16" alt="LocalStorage"> LocalStorage &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/github/FFFFFF" width="16" alt="GitHub Pages"> GitHub Pages
-</p>
-
-
 ArtelPy es un proyecto de e-commerce frontend enfocado en artesanías paraguayas, inspirado en la identidad de Carapeguá y en la tradición del poyvi.
 
 La idea fue crear una tienda digital con una estética moderna, pero sin perder el vínculo con lo artesanal. Por eso el diseño combina tonos oscuros, dorados y crema, buscando una imagen sobria y elegante que acompañe bien a los productos.
