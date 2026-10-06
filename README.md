@@ -1,12 +1,13 @@
 # 🛒 ArtelPy
 
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-Estilos-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Open--Meteo-API-4285F4?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Open-Meteo API">
-  <img src="https://img.shields.io/badge/LocalStorage-Persistencia-D2A63A?style=for-the-badge&logo=databricks&logoColor=white" alt="LocalStorage">
-  <img src="https://img.shields.io/badge/GitHub_Pages-Deploy-222222?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages">
+  <code>HTML5</code>
+  <code>Tailwind CSS</code>
+  <code>JavaScript</code>
+  <code>ES Modules</code>
+  <code>Open-Meteo API</code>
+  <code>LocalStorage</code>
+  <code>GitHub Pages</code>
 </p>
 
 ArtelPy es un proyecto de e-commerce frontend enfocado en artesanías paraguayas, inspirado en la identidad de Carapeguá y en la tradición del poyvi.
