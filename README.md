@@ -1,77 +1,58 @@
 # ArtelPy
 
-ArtelPy es un e-commerce frontend de artesanías paraguayas inspirado en la tradición artesanal de Carapeguá, conocida como la ciudad del poyvi.
+ArtelPy es un proyecto de e-commerce frontend enfocado en artesanías paraguayas, inspirado en la identidad de Carapeguá y en la tradición del poyvi.
 
-El proyecto fue desarrollado como trabajo académico con el objetivo de aplicar conceptos de maquetación web, diseño responsive, interactividad con JavaScript, almacenamiento local y consumo de APIs externas.
+La idea fue crear una tienda digital con una estética moderna, pero sin perder el vínculo con lo artesanal. Por eso el diseño combina tonos oscuros, dorados y crema, buscando una imagen sobria y elegante que acompañe bien a los productos.
+
+Este proyecto fue desarrollado como trabajo final académico y fue evolucionando desde una propuesta inicial en Figma hasta una versión funcional publicada en GitHub Pages.
 
 ## Sitio web
 
-[Ver ArtelPy en GitHub Pages](https://anibalsilva13.github.io/ArtelPy/)
+Podés ver el proyecto online en:
 
-## Características
+[https://anibalsilva13.github.io/ArtelPy/](https://anibalsilva13.github.io/ArtelPy/)
 
-- Catálogo dinámico de productos artesanales.
-- Filtros por categoría.
-- Buscador de productos.
-- Carrito de compras interactivo.
-- Persistencia del carrito mediante LocalStorage.
-- Control de cantidades y eliminación de productos.
-- Simulación de finalización de compra.
-- Formulario de contacto.
-- Diseño responsive para escritorio y dispositivos móviles.
-- Consumo de API meteorológica.
-- Detección aproximada de ubicación del usuario.
-- Visualización dinámica del clima según ubicación.
-- Interfaz inspirada en la identidad visual de ArtelPy.
+## Desarrollo
+
+El trabajo comenzó con la definición de la identidad visual y la organización de las principales secciones del sitio en Figma.
+
+Después se pasó a la implementación en código utilizando HTML, Tailwind CSS, CSS personalizado y JavaScript. A medida que el proyecto fue creciendo, se fueron agregando funcionalidades como el catálogo dinámico, filtros por categoría, búsqueda de productos, carrito de compras, almacenamiento local y consumo de APIs.
+
+También se realizó una refactorización del código JavaScript para separar responsabilidades y evitar concentrar toda la lógica en un único archivo.
+
+La intención fue mantener una estructura clara y fácil de continuar, tanto para corregir errores como para agregar nuevas funcionalidades más adelante.
+
+## Funcionalidades principales
+
+ArtelPy cuenta con un catálogo dinámico de productos, buscador, filtros por categoría y un carrito de compras donde se pueden agregar, aumentar, disminuir o eliminar productos.
+
+El carrito mantiene la información mediante LocalStorage, por lo que los productos seleccionados permanecen incluso después de actualizar la página.
+
+También se incorporó un formulario de contacto, notificaciones visuales y una simulación de finalización de compra.
+
+Como parte del consumo de APIs, el sitio obtiene una ubicación aproximada del usuario y consulta el clima actual. Si la ubicación no puede ser detectada, se utiliza Carapeguá como referencia.
 
 ## Tecnologías utilizadas
 
-- HTML5
-- Tailwind CSS
-- CSS3
-- JavaScript
-- LocalStorage
-- Fetch API
-- Open-Meteo API
-- API de geolocalización por IP
-- Git
-- GitHub
-- GitHub Pages
-- Figma
+El proyecto fue desarrollado principalmente con **HTML5, CSS3, Tailwind CSS y JavaScript**.
 
-## Consumo de APIs
-
-ArtelPy incorpora información meteorológica dinámica.
-
-La aplicación obtiene una ubicación aproximada del usuario y utiliza sus coordenadas para consultar las condiciones climáticas actuales mediante una API externa.
-
-En caso de que no sea posible determinar la ubicación, el sistema utiliza Carapeguá como ubicación de respaldo.
-
-Esta funcionalidad permite demostrar el uso de:
-
-- Fetch API
-- JSON
-- async/await
-- manejo de errores
-- consumo de servicios externos
+También se utilizaron **ES Modules, LocalStorage, Fetch API, Open-Meteo, Git, GitHub, GitHub Pages, Figma y Visual Studio Code**.
 
 ## Estructura del proyecto
 
 ```text
 ArtelPy/
-│
 ├── assets/
 │   └── img/
-│       ├── almohada.png
-│       ├── hamaca.png
-│       ├── logoartell.png
-│       ├── ponchodama.png
-│       ├── sobrecama.png
-│       ├── sombrero.png
-│       └── termoforr.png
+│
+├── js/
+│   ├── app.js
+│   ├── products.js
+│   ├── storage.js
+│   ├── ui.js
+│   └── weather.js
 │
 ├── index.html
 ├── styles.css
-├── app.js
 ├── README.md
 └── LICENSE
